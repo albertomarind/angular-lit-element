@@ -1,7 +1,7 @@
 <p>Probando mi componente creado en lit-element!</p>
 <div class="menu">
   <navigation-bar
-    (on-item-select)="onSelectedItem($event)"
+    (on-select-item)="onSelectedItem($event)"
     [attr.items]="items"
   ></navigation-bar>
   <div class="menu-body" [ngSwitch]="selectedOption">
