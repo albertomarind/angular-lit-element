@@ -1,7 +1,10 @@
 .menu{
-  max-width:30%;
+  max-width:500px;
 }
 .menu-body{
   background-color:white;
   padding:0rem 1rem 1rem 1rem;
+}
+navigation-bar{
+  display:block;
 }
