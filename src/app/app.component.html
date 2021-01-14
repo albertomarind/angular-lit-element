@@ -1,8 +1,8 @@
 <p>Probando mi componente creado en lit-element!</p>
 <div class="menu">
   <navigation-bar
+    #nv1
     (on-select-item)="onSelectedItem($event)"
-    [attr.items]="items"
   ></navigation-bar>
   <div class="menu-body" [ngSwitch]="selectedOption">
     <div *ngSwitchCase="0">
@@ -38,8 +38,5 @@
 
 Con muchas opciones
 <div>
-  <navigation-bar
-    [attr.items]="items2"
-  ></navigation-bar>
-
+  <navigation-bar #nv2></navigation-bar>
 </div>

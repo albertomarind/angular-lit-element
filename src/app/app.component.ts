@@ -1,16 +1,29 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { NavigationBehaviorOptions } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  public items: string;
-  public items2:string;
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild('nv1')
+  nv1: ElementRef;
+
+  @ViewChild('nv2')
+  nv2: ElementRef;
+
+  public items1: Array<any>;
+  public items2: Array<any>;
   public selectedOption = 0;
   constructor() {
-    let data = [
+    this.items1 = [
       {
         urlImg: 'assets/images/image.png',
         urlImgActive: 'assets/images/image-active.png',
@@ -42,7 +55,7 @@ export class AppComponent {
         selected: false,
       },
     ];
-    let data2 = [
+    this.items2 = [
       {
         urlImg: 'assets/images/image.png',
         urlImgActive: 'assets/images/image-active.png',
@@ -241,12 +254,15 @@ export class AppComponent {
         label: 'Opción 5',
         selected: false,
       },
-
     ];
-    this.items = JSON.stringify(data);
-    this.items2 = JSON.stringify(data2);
   }
-  onSelectedItem({detail}) {
+  ngAfterViewInit(): void {
+    this.nv1.nativeElement.items = this.items1;
+    this.nv2.nativeElement.items = this.items2;
+  }
+  ngOnInit(): void {}
+
+  onSelectedItem({ detail }) {
     this.selectedOption = detail.index;
     console.log(detail);
   }
