@@ -3,7 +3,6 @@
         display: inline-block;
         font-family: sans-serif;
         --element-background-color: white;
-        --element-width: 100%;
         --item-selected-background-color: #213f7f;
         --item-selected-border-radius: 5rem;
         --item-selected-label-color: white;
@@ -23,11 +22,6 @@
         position: relative;
         display: inline-flex;
         flex-wrap: wrap;
-        width: var(--element-width);
-      }
-
-      input[type='radio'] {
-        display: none;
       }
 
       .navigation-bar__item,
@@ -76,7 +70,6 @@
         transform: scale(0.8);
         width: var(--item-img-width, 25px);
         height: var(--item-img-height, 25px);
-      
       }
 
       .navigation-bar__item.active .navigation-bar__item-img--active,
@@ -100,10 +93,8 @@
         <div class="navigation-bar__wp-items">
           ${0===this.items.length?"The menu has no items":ca`
                 ${this.items.map((e,t)=>ca`
-                    <input id="rad${t}" type="radio" name="group" />
-                    <label
+                    <div
                       id="navigation-bar__item${t}"
-                      for="rad${t}"
                       class="navigation-bar__item ${e.selected?"active":""}"
                       @click="${n=>this._selectItem(n,e,t)}"
                     >
@@ -118,7 +109,7 @@
                       <span class="navigation-bar__item-label">
                         ${e.label}</span
                       >
-                    </label>
+                    </div>
                   `)}
                 <div id="figureBackground" class="figure-background"></div>
               `}
